@@ -1,0 +1,64 @@
+{% extends 'partials/head.html' %}
+{% block head %}
+{% load staticfiles %}
+  <script src="{% static 'scripts/main.js' %}"></script>
+  <script>
+    $(window).on('load',function(){
+      setTimeout(function(){
+        $('.content').css({'opacity':'1'});
+        $('#loader-container').css({'display':'none'});
+      }, 500);
+    });
+  </script>
+  <noscript>
+    <style>
+      #loader-container{
+        display : none;
+      }
+      .content{
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+{% endblock %}
+{% block content %}
+<body class="col-10-12">
+  <div id="loader-container"></div>
+  <div id="sent"><i class="fa fa-check" aria-hidden="true" style="line-height: 3.2rem;font-size: 4.2rem;"></i><br>Message Sent</div>
+  <div id="not-sent"><i class="fa fa-times" aria-hidden="true" style="line-height: 3.2rem;font-size: 4.2rem;"></i><br>Something went wrong</div>
+  <div class="content" style="opacity:0;">
+    {% include 'partials/navbar.html' %}
+    <section class="contact-us" id="contact-us">
+      <div class="left">
+        <span class="heading">Contact Us<br></span>
+        <span class="sub-heading"><i class="fa fa-circle" style="margin-right:1.2rem; background:linear-gradient(#feac42,#ffd87c);-webkit-background-clip: text; -webkit-text-fill-color: transparent;" aria-hidden="true"></i>Send us your query and we will get back to you<br></span>
+        <form method="POST" action="{% url 'submit' %}" id="submit_form"> {% csrf_token %}
+          <div class="input-fields">
+            <input name="name" type="text" placeholder="Name" id="name" required/><br>
+            <input name="e-mail" type="text" placeholder="E-mail id" id="email" required/><br>
+            <textarea name="message" placeholder="Message" id="message" required></textarea><br>
+          </div>
+        <input type="submit" value="Submit"><br>
+        </form>
+      </div>
+      <div class="right">
+        <div class="contact-item">
+          <img class="icons" src="{% static 'images/location.png' %}" style="width:auto;height:4.8rem;margin-right:50px;">
+          <div class="text">
+            <span class="heading">ADDRESS<br></span>
+            <span class="sub-heading">Design Studio, Hobbies Club,<br>IIT Roorkee, Roorkee.<br></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <img class="icons" src="{% static 'images/email.png' %}" style="width:auto;height:3.2rem;">
+          <div class="text">
+            <span class="heading">E-MAIL<br></span>
+            <span class="sub-heading">design.studio@iitr.ac.in<br></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'partials/footer.html' %}
+  </div>
+</body>
+{% endblock %}

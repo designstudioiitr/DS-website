@@ -1,0 +1,119 @@
+{% extends 'partials/head.html' %}
+{% block head %}
+{% load staticfiles %}
+  <script src="{% static 'scripts/main.js' %}"></script>
+  <script>
+    var count = 0;
+    var content = content_loader();
+
+    $(window).on('load',function(){
+      setTimeout(function(){
+        $('.content').css({'opacity':'1'});
+        $('#loader-container').css({'display':'none'});
+      }, 500);
+    });
+
+    $(document).ready(function() {
+      preload(content);
+
+      circle_scroller(content);
+      $('#footer-grad > #start').css({"stop-color":"{{ end_color }}", "stop-opacity":"1"});
+      $('#footer-grad > #stop').css({"stop-color":"{{ color }}", "stop-opacity":"1"});
+      var lastChange = +new Date();
+      $(window).on('wheel', function(event){
+        if(+new Date() - lastChange > 1500){
+          if(event.originalEvent.deltaY < 0){
+            count-=1;
+            if (count<0) { count += content.length; }
+            content_updater(content, count);
+            circle_scroller_updater(content, count);
+          }
+          else if (event.originalEvent.deltaY > 0){
+            count+=1;
+            content_updater(content, count);
+            circle_scroller_updater(content, count);
+          }
+          lastChange = +new Date();
+        }
+      });
+      $(window).on('load',function(){
+        $('#footer-grad > #start').css({"stop-color":"{{ end_color }}", "stop-opacity":"1"});
+        $('#footer-grad > #stop').css({"stop-color":"{{ color }}", "stop-opacity":"1"});
+      });
+      $('.circular-scrolls').on('click',function(){
+        if(+new Date() - lastChange > 1000){
+        	count=parseInt($(this).attr('id'));
+        	content_updater(content, count);
+          circle_scroller_updater(content, count);
+        }
+        lastChange = +new Date();
+      });
+    });
+  </script>
+  <noscript>
+    <style>
+      #loader-container{
+        display : none;
+      }
+      .content{
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+  <style>
+    .coloured{
+      color: {{ color }};
+    }
+    .active{
+      color: {{ color }};
+    }
+
+    .coloured-bg{
+      background: radial-gradient({{ end_color }}, {{ color }});
+    }
+    a[class=coloured]:hover {
+      color: #5f5f5f !important;
+      text-decoration: none;
+    }
+    .coloured-icon{
+      background: linear-gradient({{ color }},{{ end_color }});
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .filled-scrolls{
+      width: 0.75rem;
+      height: 0.75rem;
+      margin-left: 0;
+      background-color: {{color}};
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<body class="col-10-12">
+  <div id="loader-container"></div>
+  <div class="content" style="opacity:0;">
+    {% include 'partials/navbar.html' %}
+    <section class="w-portfolio" id="portfolio">
+      <div class="left">
+        <span class="title">
+          <span class="heading">{{ name }}</span><br>
+          <span class="sub-heading"><i class="fa fa-circle coloured-icon" style="margin-right:0.25em;" aria-hidden="true"></i><span>{{ subhead }}</span><br></span>
+        </span>
+        <span class="description">{{ brief }}<br></span>
+        <span class="view-project"><a class = "coloured" href="/projects?name={{ identifier }}">VIEW PROJECT<br></a></span>
+      </div>
+      <div class="right circle coloured-bg">
+        <a href="/projects?name={{ identifier }}">
+          {% with 'images/'|add:identifier|lower|add:'.png' as image_static %}
+          <img id="project" src="{% static image_static %}"/>
+          {% endwith %}
+        </a>
+      </div>
+    </section>
+
+    <div id="scroller-circle"></div>
+
+    {% include 'partials/footer.html' %}
+  </div>
+</body>
+{% endblock %}

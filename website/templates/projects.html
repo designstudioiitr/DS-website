@@ -1,0 +1,127 @@
+{% extends 'partials/head.html' %}
+{% block head %}
+{% load staticfiles %}
+  <script src="{% static 'scripts/main.js' %}"></script>
+  <script>
+  function nav_trans() {
+    $(window).on('wheel',function(event){
+      if($(window).scrollTop()+event.originalEvent.deltaY>0){
+          $('.nav-back').css({"background-color":"#ffffff","transition":"all 0.5s linear","box-shadow": "0px 1px 0px 0px rgba(206,206,206,1)"});
+      }
+      else if(event.originalEvent.deltaY<0 && $(window).scrollTop()<60){
+  		    $('.nav-back').css({"background-color":"{{ color }}","transition":"all 0.5s linear","box-shadow":"0px 1px 0px 0px {{ color }}"});
+      }
+    });
+  }
+
+  $(window).on('load',function(){
+    setTimeout(function(){
+      $('.content').css({'opacity':'1'});
+      $('#loader-container').css({'display':'none'});
+    }, 500);
+  });
+
+  $(document).ready(function(){
+
+    $('nav').css({"width":"72.33%","margin-bottom":"15px"});
+    $('.nav-back').css({"background-color":"{{ color }}"});
+    $('html').css({"overflow-x":"hidden"});
+    nav_trans();
+  });
+  $(window).on('load scroll',function(){
+    $('#footer-grad > #start').css({"stop-color":"{{ end_color }}", "stop-opacity":"1"});
+    $('#footer-grad > #stop').css({"stop-color":"{{ color }}", "stop-opacity":"1"});
+    $('.footer-circle').css({'height':'4.375rem'});
+    $('footer').addClass('col-10-12');
+    if($('nav').offset().top>20){
+        $('.nav-back').css({"background-color":"#ffffff","transition":"all 0.5s linear","box-shadow": "0px 1px 0px 0px rgba(206,206,206,1)"});
+        $('nav > .right > a').removeClass('colored-text');
+        if("{{ text_color }}"=="#ffffff"){
+          $('#logo').attr("src","static/images/logo.png");
+        }
+    }
+    else if($('nav').offset().top<=20){
+        $('.nav-back').css({"background-color":"{{ color }}","transition":"all 0.5s linear","box-shadow": "0px 1px 0px 0px {{ color }}"});
+        $('nav > .right > a').addClass('colored-text');
+        if("{{ text_color }}"=="#ffffff"){
+          $('#logo').attr("src","static/images/logolight.png");
+        }
+    }
+    $('.icons > a, .project-nav > a').css({"color":"{{ color }}"});
+  });
+  </script>
+  <noscript>
+    <style>
+      #loader-container{
+        display : none;
+      }
+      .content{
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+  <style>
+    .colored-text {
+      color : {{ text_color }} !important;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <body class="col-12-12">
+    <div id="loader-container"></div>
+    <div class="content" style="opacity:0;">
+      <div class="nav-back">
+      {% include 'partials/navbar.html' %}
+      </div>
+      <section class="detailed-port-land">
+        <div class="landing" style="background-color:{{ color }}">
+          <h3 class="sub-heading colored-text">{{ subhead|upper }}</h3>
+          <h1 class="heading colored-text">{{ name|upper }}</h1>
+          <h2 class="brief colored-text">{{ brief }}</h2>
+          {% with 'images/'|add:identifier|lower|add:'.png' as image_static %}
+          <img id="detailed-project" src="{% static image_static %}"/>
+          {% endwith %}
+        </div>
+      </section>
+      <section class="detailed-port">
+
+        <div class="article col-10-12">
+          <h1 class="heading">ABOUT</h1>
+          <svg style="position:relative;top:-2rem;" width="7.333rem" height="3px">
+            <line x1="0" y1="0" x2="7.333rem" y2="0" style="stroke:#feac42;stroke-width:2;" />
+          </svg>
+          <p class="content">{{ about|safe }}</p>
+        </div>
+        {% with 'images/'|add:identifier|lower|add:'/1.png' as image_static %}
+        <img class="portfolio-image" src="{% static image_static %}"/>
+        {% endwith %}
+        <div class="article col-10-12">
+          <h1 class="heading">IDEA</h1>
+          <svg style="position:relative;top:-2rem;" width="4.6rem" height="3px">
+            <line x1="0" y1="0" x2="4.6rem" y2="0" style="stroke:#feac42;stroke-width:2;" />
+          </svg>
+          <p class="content">{{ idea|safe }}</p>
+        </div>
+        {% with 'images/'|add:identifier|lower|add:'/2.png' as image_static %}
+        <img class="portfolio-image" src="{% static image_static %}"/>
+        {% endwith %}
+        <div class="article col-10-12">
+          <h1 class="heading">DETAILS</h1>
+          <svg style="position:relative;top:-2rem;" width="8rem" height="3px">
+            <line x1="0" y1="0" x2="8rem" y2="0" style="stroke:#feac42;stroke-width:2;" />
+          </svg>
+          <p class="content">{{ details|safe }}</p>
+        </div>
+        {% with 'images/'|add:identifier|lower|add:'/3.png' as image_static %}
+        <img class="portfolio-image" src="{% static image_static %}"/>
+        {% endwith %}
+        <div class="project-nav">
+          <a class="coloured" href="/projects?sno={{ no|add:"-1"}}" style="float:left">PREVIOUS PROJECT</a>
+          <a class="coloured" href="/projects?sno={{ no|add:"1"}}" style="float:right">NEXT PROJECT</a>
+        </div>
+      </section>
+      {% include 'partials/footer.html' %}
+    </body>
+  </div>
+  {% endblock %}
+</html>

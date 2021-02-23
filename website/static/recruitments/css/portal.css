@@ -1,0 +1,302 @@
+@media (min-width: 300px) {
+  html{
+    font-size : 6px;
+  }
+    .main{
+        height: 47.5rem;
+        margin: 0 22% 8rem 22%;
+        position: relative;
+    }
+}
+
+@media (min-width: 800px) {
+  html{
+    font-size : 9px;
+  }
+    .main{
+        height: 47.5rem;
+        margin: 0 22% 8rem 22%;
+        position: relative;
+    }
+}
+
+@media (min-width: 1300px) {
+  html{
+    font-size : 12px;
+  }
+    .main{
+        height: 47.5rem;
+        margin: 0 22% 8rem 22%;
+        position: relative;
+    }
+}
+
+@media (min-width: 1400px) {
+  html{
+    font-size : 13px;
+  }
+    .main{
+        height: 55.5rem;
+        margin:2rem 16% 8rem 16%;
+        position: relative;
+        }
+    section[id="5"]{
+      height : 59.5rem;
+    }
+}
+
+@media (min-width: 1800px) {
+  html{
+    font-size : 16px;
+  }
+    .main{
+        height: 47.5rem;
+        margin: 0 22% 8rem 22%;
+        position: relative;
+    }
+    section[id="5"]{
+      height : 53.5rem;
+    }
+}
+
+@media (min-width: 2400px) {
+  html{
+    font-size : 21px;
+  }
+    .main{
+        height: 47.5rem;
+        margin: 0 22% 8rem 22%;
+        position: relative;
+    }
+}
+
+body {margin: 0; padding: 0; }
+
+.outer{
+  transition: all 0.5s ease-out;
+}
+
+.container-fluid {width:100%;}
+
+.logo {width:3rem; float:left;top:3rem; left: 6rem;position: fixed; z-index: 15;}
+
+.recruiting {transform: rotate(-90deg);position:fixed; z-index: 16; top:10rem;left:18rem;font-family: 'Montserrat', sans-serif; font-size: 1.5rem;line-height: 1.2;}
+
+.fb i:hover{color:#3b5998 !important;}
+
+.insta i:hover{color:#e95950 !important}
+
+.image {height:40rem; position: absolute; top:8rem;left:6rem;}
+
+.bodytext {position: relative; z-index: 25; width:40rem; top:10rem;float:right;height: 60%}
+
+#ani {font-size: 6rem;}
+
+.heading {font-family: 'Libre Baskerville', serif; font-size: 7rem;float:right; text-align: right;margin-bottom: 1.3rem;line-height: 1;margin-top:5rem;}
+
+.sub {float: right;top:2rem;margin-bottom: 1.5rem;}
+
+.hl {border-bottom: 0.125rem solid black; width: 15rem; float: left; margin-top: 2rem;margin-right: 1.5rem;}
+
+.subtext {font-family: 'Montserrat', sans-serif; font-size: 2.4rem; float: right;}
+
+.intro {width:25rem; font-family: 'Montserrat', sans-serif; font-size: 1.2rem;text-align: right; line-height: 1.6; float: right;  opacity: 0.9; margin-bottom: 1.5rem; margin-left: 20rem; }
+
+.apply a {border: .12rem solid black; text-decoration: none; color: black;padding: 0.6rem 2.1rem; float: right;font-family: 'Libre Baskerville', serif; font-size: 1.2rem; transition: 0.4s; opacity:1.0;}
+
+.apply a {
+  position: relative;
+  //display:block;
+  outline: 0;
+  overflow:hidden;
+  background: none;
+  z-index: 40;
+  transition:         0.08s ease-in;
+  -o-transition:      0.08s ease-in;
+  -ms-transition:     0.08s ease-in;
+  -moz-transition:    0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.apply {
+  -webkit-transition: all 150ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
+    text-decoration: none;
+}
+
+.apply a:before{
+  position:absolute;
+  content:"";
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-1;
+  opacity:0;
+    text-decoration: none;
+  -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+}
+
+.apply a:after {
+  content: "";
+  position: absolute;
+  background: black;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -2;
+    text-decoration: none;
+  -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+}
+.apply a:hover{
+  color:white;
+  border: 0.167rem black solid;
+    text-decoration: none;
+    opacity: 0.9
+}
+.apply a:hover:before {
+  opacity: .8;text-decoration: none;
+}
+.apply a:hover:after {
+  top: 0;text-decoration: none;
+}
+
+
+
+.right {position: fixed; z-index: 50; height:100%; float: right; right:5rem;top:4.7rem;font-family: 'Montserrat', sans-serif;}
+
+.contacts {text-align:right; line-height: 1.2;}
+
+.dropdown {width:6rem;height: 10rem; position: fixed; z-index:60; top:1rem; opacity: 1.0; }
+
+.contact {font-family: 'Montserrat', sans-serif; font-size:1.2rem;top:4rem;right:5rem;}
+
+.schedule-tab {font-family: 'Montserrat', sans-serif; padding-right: 3rem; font-size:1.2rem;float: right;}
+
+.scroll {float: left;transform: rotate(90deg);position:absolute; font-size: 0.95rem;right: 1.3rem;bottom:14rem;}
+
+.arrow {width:3rem; float: left;transform: rotate(90deg);position:absolute; right: 1.2rem;bottom: 10rem;}
+
+#scroller-circle{
+  right: 1rem;
+  top: 40%;
+  height: auto;
+  width: 2rem;
+  position: absolute;
+  transform: translateY(-60%);
+}
+
+.circular-scrolls{
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #dfdfdf;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  margin-left: 0.1rem
+}
+.filled-scrolls{
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-left: 0;
+  background-color: black;
+}
+
+.dropbtn {
+    color: black;
+    font-size: 1.2rem;
+    border: none;
+    transition: all linear 0s;
+    cursor: default;
+    padding-bottom: 0.5rem
+}
+
+.dropdown {
+    top:0rem; right:2rem;
+    position: relative;
+    display: inline-block;
+    transition: all linear 0s;
+}
+
+#d1, #d2 {opacity: 0; display: none;}
+
+.dropdown-contacts {
+    height: 21rem;
+    position: absolute;
+    top : 2.5rem;
+    width: auto;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    right:0;
+    transition: all linear 0s;
+}
+
+.dropdown-schedule {
+    height: 31.25rem;
+    position: absolute;
+    top : 2.5rem;
+    min-width: auto;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    z-index: 9;
+    right:0;
+    transition: all linear 0s;
+}
+
+.content {
+    color: black;
+    padding: 2rem 1.5rem 0rem 1.5rem;
+    text-decoration: none;
+    display: block;
+    transition:0.8s;
+}
+
+#result {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 4rem;
+  text-align: center;
+
+	width: 40%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+	background: white;
+	box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.12);
+	transition: all 0.5s ease-out;
+
+	opacity: 0;
+}
+
+#result tbody{
+  margin-left: 3rem;
+}
+
+#close{
+	text-align: right;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  cursor: pointer;
+}
+
+#result #heading{
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2.4rem;
+}
+
+#result .last-row{
+  line-height: 1rem;
+}
+
+#result-tab{
+  cursor: pointer;
+  position: relative;
+  right: 3rem;
+}
+
+#result-tab:hover{
+  border-bottom: 2px solid black;
+}

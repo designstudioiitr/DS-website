@@ -1,0 +1,14 @@
+{% load staticfiles %}
+<nav class="navbar navbar-default" id="nav">
+  <div class="left">
+    <a href="{% url 'index' %}">
+      <img id="logo" alt="logo" src="{% static 'images/logo.png' %}"/>
+    </a>
+  </div>
+  <div class="right">
+    <a id="nav-recruitment" href="{% url 'recruitment' %}" target="_blank">RECRUITMENT</a>
+    <a id="nav-about" href="{% url 'index' %}#about">ABOUT US</a>
+    <a id="nav-portfolio" href="{% url 'portfolio' %}">PORTFOLIO</a>
+    <a id="nav-contact" href="{% url 'contact' %}">CONTACT US</a>
+  </div>
+</nav>

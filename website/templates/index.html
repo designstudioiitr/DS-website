@@ -1,0 +1,341 @@
+{% extends 'partials/head.html' %}
+{% block head %}
+{% load staticfiles %}
+  <script src="{% static 'scripts/main.js' %}"></script>
+  <script src="{% static 'scripts/jquery.scrollify.js' %}"></script>
+  <script>
+    var offSet = 5;
+    if ($(window).width()<1370) { offSet*=12; }
+    else if($(window).width()<1450) { offSet*=15; }
+    else { offSet*=18; }
+
+    $(window).on('load',function(){
+      setTimeout(function(){
+        $('.content').css({'opacity':'1'});
+        $('#loader-container').css({'display':'none'});
+      }, 500);
+    });
+
+
+    $(document).ready(function(){
+
+      $('nav').css({"width":"72.33%","margin-bottom":"15px"});
+      if($(location).attr("href").split("/").pop()!="#about") {
+        $('.nav-shadow').css({"display":"none"});
+      }
+      $.scrollify({
+        section : ".scroller",
+        interstitialSection : "",
+        easing: "easeOutCubic",
+        scrollSpeed: 1000,
+        offset : 0,
+        scrollbars: true,
+        standardScrollElements: "",
+        setHeights: true,
+        overflowScroll: true,
+        updateHash: false,
+        touchScroll:true,
+        before:function() {
+          var place = $.scrollify.current().attr('id');
+          if(place=="about") {
+            $('.footer-circle').css({'height':'4.375rem'});
+            $('.nav-back').css({"transition":"all 0.5s linear","box-shadow": "0px 1px 0px 0px rgba(206,206,206,1)"});
+          }
+        },
+        after:function() {
+          var place = $.scrollify.current().attr('id');
+          if(place=="about") {
+            activeStateManager("about");
+          }
+          else{
+            window.location.hash="";
+            activeStateManager();
+            $('.nav-back').css({"transition":"all 0.5s linear","box-shadow":"0px 1px 0px 0px rgba(255,255,255,1)"});
+          }
+        },
+        afterResize:function() {},
+        afterRender:function() {}
+      });
+    });
+    $(window).on('load', function(){
+      $('.footer-circle').css({'height':'4.375rem'});
+      if($(location).attr("href").split("/").pop()=="#about") {
+        $('.nav-back').css({"transition":"all 0.5s linear","box-shadow": "0px 1px 0px 0px rgba(206,206,206,1)"});
+      }
+    });
+  </script>
+  <noscript>
+    <style>
+      #loader-container{
+        display : none;
+      }
+      .content{
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+{% endblock %}
+{% block content %}
+<body class="col-10-12">
+  <div id="loader-container"></div>
+  <div class="content">
+    <div class="nav-back">
+      {% include 'partials/navbar.html' %}
+    </div>
+
+    <section class="home scroller" id="home">
+        <svg height="16" width="16" style="position: absolute;left: 55.458vw;top: 20.667vh;">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="8" cy="8" r="8" fill="url(#grad1)"></circle>
+        </svg>
+        <svg height="78" width="78" style="position: absolute;top: 38.222vh;left: 60.388vw;">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="39" cy="39" r="39" fill="url(#grad1)"></circle>
+        </svg>
+        <svg height="28" width="28" style="position: absolute;top: 44.667vh;left: 27.902vw;">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="14" cy="14" r="14" fill="url(#grad1)"></circle>
+        </svg>
+        <svg height="21" width="21" style="position: absolute;top: 41.444vh;right: 23.667vw;">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="10.5" cy="10.5" r="10.5" fill="url(#grad1)"></circle>
+        </svg>
+        <svg height="254" width="254" style="position: absolute;top: 85.222vh;left: 60.431vw;">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="127" cy="127" r="127" fill="url(#grad1)"></circle>
+        </svg>
+        <svg height="185" width="79" style="position: absolute;left: 0;top: 58.11vh;">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+              <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="-13.5" cy="92.5" r="92.5" fill="url(#grad1)"></circle>
+        </svg>
+
+      <svg height="33" width="33" style="position: absolute;left: 9.236vw;top: 25vh;">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="16.5" cy="16.5" r="15" stroke="url(#grad1)" stroke-width="3" fill="none"></circle>
+      </svg>
+      <svg height="46" width="46" style="position:  absolute;right: 12.708vw;top: 20.667vh;">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="23" cy="23" r="21.5" stroke="url(#grad1)" stroke-width="3" fill="none"></circle>
+      </svg>
+      <svg height="46" width="46" style="position: absolute;top: 86.222vh;left: 10.278vw;">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="23" cy="23" r="21.5" stroke="url(#grad1)" stroke-width="3" fill="none"></circle>
+      </svg>
+      <svg height="43" width="43" style="position: absolute;top: 59.222vh;left: 51.144vw;">
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="21.5" cy="21.5" r="21.5" fill="url(#grad2)"></circle>
+      </svg>
+      <svg height="173" width="64" style="position: absolute;right: 0;top: 28.778vh;">
+        <defs>
+          <linearGradient id="grad3" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="86.5" cy="86.5" r="86.5" fill="url(#grad3)"></circle>
+      </svg>
+      <div class="letters">
+        <div class="design">
+          <span style="position:relative;top:12px">D</span>
+          <span style="position:relative;top:60px">E</span>
+          <span style="position:relative;top:-7px;">S</span>
+          <span style="position:relative;top:45px">I</span>
+          <span style="position:relative;top:-15px">G</span>
+          <span style="position:relative;top:12px;">N</span>
+        </div>
+        <div class="studio">
+          <span style="position:relative;top:60px;">S</span>
+          <span style="position:relative;top:0px;">T</span>
+          <span style="position:relative;top:49px;">U</span>
+          <span style="position:relative;top:0px;">D</span>
+          <span style="position:relative;top:60px;">I</span>
+          <span style="position:relative;top:18px;">O</span>
+        </div>
+      </div>
+      <div class="desc">
+        At Design Studio, we aspire to inspire. We work to create experiences and products to improve lives. Inspired by Leonardo Da Vinci, we combine science and design to create and innovate.
+      </div>
+    </section>
+
+    <section class="about scroller" id="about">
+      <div style="height: 5rem; color: #ffffff; display: flow-root"></div>
+      <svg height="344" width="172" style="position: absolute;right: 0;margin-top:-12rem;">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+          </linearGradient>
+        </defs>
+          <circle cx="182" cy="172" r="169" stroke="url(#grad1)" stroke-width="3" fill="none"></circle>
+      </svg>
+      <div class="stats">
+        <div class="sub">
+          <span class="numbers">51</span><br>
+          <span class="subtext">Innovators</span>
+          <svg class="sub-circle" style="">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+              </linearGradient>
+            </defs>
+              <circle cx="1.246rem" cy="1.246rem" r="1.246rem" stroke="none" fill="url(#grad1)"></circle>
+          </svg>
+        </div>
+        <svg class="sub-line">
+          <line x1="0" y1="0" x2="0" y2="30" style="stroke:#999999;stroke-width:2" />
+        </svg>
+        <div class="sub">
+          <span class="numbers">12</span><br>
+          <span class="subtext">Dribbblers</span>
+          <svg class="sub-circle" style="">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+              </linearGradient>
+            </defs>
+              <circle cx="1.246rem" cy="1.246rem" r="1.246rem" fill="url(#grad1)"></circle>
+          </svg>
+        </div>
+        <svg class="sub-line">
+          <line x1="0" y1="0" x2="0" y2="30" style="stroke:#999999;stroke-width:2" />
+        </svg>
+        <div class="sub">
+          <span class="numbers">14</span><br>
+          <span class="subtext">Projects</span>
+          <svg class="sub-circle" style="">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+              </linearGradient>
+            </defs>
+              <circle cx="1.246rem" cy="1.246rem" r="1.246rem" stroke="none" fill="url(#grad1)"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="principles">
+        <div style="display:flow-root;margin:50px 0px;">
+          <span class="heading">WHAT WE DO<br></span>
+          <svg style="" width="15rem" height="4px">
+            <line x1="0" y1="0" x2="15rem" y2="0" style="stroke:#feac42;stroke-width:3" />
+          </svg>
+        </div>
+        <div style="display:flow-root;">
+          <div class="article-container">
+            <div class="article">
+              <h1 class="sub-heading">UI/UX</h1>
+              <span class="count">01</span><br>
+              <p class="text">What is experienced is generally what seems to be the reality and this group is the one that shapes the reality at Design Studio by predicting the future expectations of people and simplifying the interface of existing products.</p>
+            </div>
+            <img src="{% static 'images/i1.png' %}" style="margin-top:5%;"/>
+          </div>
+          <div class="article-container">
+            <img src="{% static 'images/i2.png' %}"/>
+            <div class="article">
+              <h1 class="sub-heading">Product Design</h1>
+              <span class="count">02</span><br>
+              <p class="text">Stirred with the interaction between products, systems and those who use them we at Design Studio continuously strive to bring out innovation and creativity in every Product designed by us.</p>
+            </div>
+          </div>
+          <svg height="166" width="166" style="position:absolute;left: -10px;margin-top: 370px;">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+              </linearGradient>
+            </defs>
+              <circle cx="0" cy="84" r="84" stroke="none" fill="url(#grad1)"></circle>
+          </svg>
+          <svg height="65" width="65" style="position:absolute;left: 60px;margin-top: 560px;">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:#ffd87c;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:#feac42;stop-opacity:1"></stop>
+              </linearGradient>
+            </defs>
+              <circle cx="32.5" cy="32.5" r="32.5" stroke="none" fill="url(#grad1)"></circle>
+          </svg>
+          <div class="article-container">
+            <div class="article">
+              <h1 class="sub-heading">Branding</h1>
+              <span class="count">03</span><br>
+              <p class="text">Encompassing the entire image of an organisation, including all the ways in which an organisation reacts with its consumers is the job of the Branding Team here at the Studio.</p>
+            </div>
+            <img src="{% static 'images/i3.png' %}"/>
+          </div>
+          <div class="article-container">
+            <img src="{% static 'images/i4.png' %}"/>
+            <div class="article">
+              <h1 class="sub-heading">Game Design</h1>
+              <span class="count">04</span><br>
+              <p class="text">Amalgamating Graphic and Motion Design is what the Animation and Game Design group at Design Studio does along with creating 3D models and Augmented Reality based games</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flow-root;margin:50px 0px;">
+          <span class="heading">LOGO IN THE MAKING<br></span>
+          <svg style="" width="23rem" height="4px">
+            <line x1="0" y1="0" x2="23rem" y2="0" style="stroke:#feac42;stroke-width:3" />
+          </svg>
+        </div>
+      </div>
+      <div class="video">
+        <iframe src="https://player.vimeo.com/video/184106080" width="640" height="480" frameborder="0"></iframe>
+      </div>
+    </section>
+    {% include 'partials/footer.html' %}
+  </div>
+</body>
+{% endblock %}
